@@ -16,12 +16,13 @@
  * Recommendation: 70+ = Highly recommended, 50-69 = Recommended, < 50 = Not recommended
  */
 
-import { TribeGoal } from '../entities/Tribe.js';
+import { GoalType } from '../entities/Tribe.js';
+import { TribeGoal } from '../entities/PersonalityQuiz.js';
 
 export interface UserProfile {
   userId: string;
-  primaryGoal: TribeGoal;
-  secondaryGoals?: TribeGoal[];
+  primaryGoal: GoalType;
+  secondaryGoals?: GoalType[];
   interests: string[];
   learningStyle: 'visual' | 'auditory' | 'reading' | 'kinesthetic' | 'mixed';
   motivation: 'achievement' | 'community' | 'growth' | 'purpose' | 'autonomy';
