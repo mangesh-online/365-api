@@ -28,17 +28,30 @@ JWT_SECRET=your-secret-key-here
 
 ## Deployment Steps
 
-### 1. Fresh Deployment (Empty Database)
+### Deploying to Render
 
-```bash
-# Install dependencies
-npm install
+**1. Create a new Web Service on Render:**
+   - Connect your GitHub repository: `https://github.com/mangesh-online/365-api`
 
-# Start the server
-npm run dev
-```
+**2. Configure Build & Start Commands:**
+   - **Build Command:** `npm install && npm run build`
+   - **Start Command:** `node dist/index.js`
 
-**What happens:**
+**3. Set Environment Variables:**
+   ```
+   DATABASE_URL=mysql://username:password@host:port/database
+   PORT=5001
+   FRONTEND_URL=https://your-frontend-url.com
+   JWT_SECRET=your-secret-key-here
+   NODE_ENV=production
+   ```
+
+**4. Deploy:**
+   - Render will automatically build and deploy your application
+
+**What happens on first deployment:**
+- ✅ Installs dependencies
+- ✅ Compiles TypeScript to JavaScript
 - ✅ Connects to database
 - ✅ Creates all tables automatically
 - ✅ Seeds master data:
@@ -48,6 +61,16 @@ npm run dev
   - 30 Media items (audio, video guides)
   - 12 Courses (structured programs)
   - 27 Sessions (group sessions/workshops)
+
+### 1. Local Development (Fresh Setup)
+
+```bash
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+```
 
 ### 2. Subsequent Runs (Existing Data)
 
