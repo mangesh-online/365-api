@@ -9,7 +9,7 @@ import {
   Index,
 } from 'typeorm';
 import { User } from './User.js';
-import { HabitLog } from './HabitLog.js';
+import type { HabitLog } from './HabitLog.js';
 
 @Entity('habits')
 @Index(['userId'])
@@ -66,6 +66,6 @@ export class Habit {
   })
   user: User;
 
-  @OneToMany(() => HabitLog, (log) => log.habit, { cascade: true })
+  @OneToMany(() => import('./HabitLog.js').then(m => m.HabitLog), (log: any) => log.habit, { cascade: true })
   logs: HabitLog[];
 }

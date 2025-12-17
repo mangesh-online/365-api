@@ -6,7 +6,6 @@ import {
   CreateDateColumn,
   Index,
 } from 'typeorm';
-import { Habit } from './Habit.js';
 
 @Entity('habit_logs')
 @Index(['habitId', 'completedAt'])
@@ -30,9 +29,9 @@ export class HabitLog {
   @CreateDateColumn()
   completedAt: Date;
 
-  @ManyToOne(() => Habit, (habit) => habit.logs, {
+  @ManyToOne(() => import('./Habit.js').then(m => m.Habit), (habit: any) => habit.logs, {
     onDelete: 'CASCADE',
     eager: false,
   })
-  habit: Habit;
+  habit: any;
 }
